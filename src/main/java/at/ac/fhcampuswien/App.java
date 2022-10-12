@@ -38,7 +38,7 @@ public class App {
         // input your solution here
         Scanner scan = new Scanner(System.in);
         System.out.print("n: ");
-        int rows = 0;
+        int rows;
         int number = 1;
         rows = scan.nextInt();
 
@@ -74,29 +74,30 @@ public class App {
 
     //todo Task 4
     public void printRhombus() {
+
         // input your solution here
+        //Quelle nicht vergessen!!!!!!
         int h;
         char c;
         int experiment = 1;
         Scanner scan = new Scanner(System.in);
-
         System.out.print("h: ");
         h = scan.nextInt();
         System.out.print("c: ");
         c = scan.next().charAt(0);
 
         if (h % 2 != 0) {
-            for (int b = 1; b <= h; b++) {
-                for (int i = b; i < h; i++) {
+            for (int rows = 1; rows <= h/2; rows++) {
+                for (int i = rows; i < h; i++) {
                     System.out.print(" ");
                 }
-                for (int y = 1; y < (2 * b); y++) {
+                for (int y = 1; y < (2 * rows); y++) {
                     System.out.print("H");
                 }
                 System.out.println();
                 experiment++;
                 int smallersymbol = experiment + 1;
-                if (b == h) {
+                if (rows == h) {
                     break;
                 }
             }
@@ -116,18 +117,17 @@ public class App {
             else {
                 System.out.println("Invalid number!");
             }
-         }
-
+    }
     //todo Task 5
     public void marks() {
         // input your solution here
         Scanner scan = new Scanner(System.in);
         int grades;
         int i = 1;
-        int x = 0;
+        int x;
         int sum = 0;
         float sumgrades = 0;
-        float interception = 0;
+        float interception;
         int marks = 0;
 
         for (int a = 1; a > 0; a++) {
@@ -154,8 +154,7 @@ public class App {
                 System.out.println("Negative marks: " + sum);
                 break;
             } else if (x == 0 && i != 1) {
-                System.out.printf("Average: 0.00");
-                System.out.println();
+                System.out.println("Average: 0.00");
                 System.out.println("Negative marks: " + sum);
                 break;
             }
@@ -166,20 +165,36 @@ public class App {
     public void happyNumbers() {
         // input your solution here
         Scanner scan = new Scanner(System.in);
+
         System.out.print("n: ");
         int n = scan.nextInt();
 
-        int hunderter = n / 100;
-        int zehner = (n / 10) - hunderter * 10;
-        int einer = n % 10;
-        int Iterationsschritt1 = 1;
+        /*int hunderter = (n / 100);
+        int zehner = (n / 10) % 10;
+        int einer = n % 10;*/
 
-       while (n > 0)  {
-            Iterationsschritt1 = (hunderter * hunderter + zehner * zehner + einer * einer);
+        int Iterationsschritt1 = 0;
+
+        while (n > 0) {
+
+            if (n != 1 && n != 4) {
+                int hunderter = (n / 100);
+                int zehner = (n / 10) % 10;
+                int einer = n % 10;
+
+                Iterationsschritt1 = (hunderter * hunderter + zehner * zehner + einer * einer);
+                n = Iterationsschritt1;
+            }
+                if (n == 4) {
+                System.out.println("Sad number!");
+                break;
+            } else if (n==1) {
+                System.out.println("Happy number!");
+                break;
+            }
         }
 
     }
-
     public static void main(String[] args){
         App exercise2 = new App();
 
@@ -200,5 +215,8 @@ public class App {
 
         System.out.println("\nTask 6: Fröhliche Zahlen");
         exercise2.happyNumbers();
+    }
+
+    private class type {
     }
 }
