@@ -78,38 +78,35 @@ public class App {
         // input your solution here
         //Quelle nicht vergessen!!!!!!
         int h;
-        char c;
-        int experiment = 1;
         Scanner scan = new Scanner(System.in);
         System.out.print("h: ");
         h = scan.nextInt();
         System.out.print("c: ");
-        c = scan.next().charAt(0);
+       char c = scan.next().charAt(0);
+
 
         if (h % 2 != 0) {
-            for (int rows = 1; rows <= h/2; rows++) {
-                for (int i = rows; i < h; i++) {
+            for (int rows = 0; rows <= (h/2); rows++) {
+                for (int spaces = rows; spaces < h/2; spaces++) {
                     System.out.print(" ");
                 }
-                for (int y = 1; y < (2 * rows); y++) {
-                    System.out.print("H");
+                for (int symbols = 0-rows; symbols <= rows; symbols++) {
+                    System.out.print((char)(c-Math.abs(symbols)));
                 }
                 System.out.println();
-                experiment++;
-                int smallersymbol = experiment + 1;
                 if (rows == h) {
                     break;
                 }
             }
-            for (int z = h-1; z > 0; z--) {
-                for (int i = 0; i < h - z; i++) {
+            for (int rows2 = (h/2) - 1; rows2 >= 0; rows2--) {
+                for (int spaces2 = rows2 + 1 ; spaces2 <= h/2 ; spaces2++) {
                     System.out.print(" ");
                 }
-                for (int a = 1; a < (2 * z); a++) {
-                    System.out.print("H");
+                for (int symbols2 = 0-rows2; symbols2 <= rows2; symbols2++) {
+                    System.out.print((char)(c-Math.abs(symbols2)));
                 }
                 System.out.println();
-                if (z == 0) {
+                if (rows2 == 0) {
                     break;
                 }
             }
